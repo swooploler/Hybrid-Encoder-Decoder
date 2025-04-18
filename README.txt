@@ -1,33 +1,60 @@
-# Hybrid File Encryption Tool
+Hybrid File Encryption Tool
+Overview
+This tool allows you to encrypt and decrypt files using hybrid encryption, combining RSA and AES encryption. You can generate RSA key pairs, encrypt files with AES using the public RSA key, and decrypt them with the private RSA key.
 
-A command-line based file encryption and decryption tool using **Hybrid Cryptography (AES + RSA)**.  
-The system combines the speed of symmetric encryption (AES) with the security of asymmetric encryption (RSA) to ensure safe file transfers and storage.
+Caution: Turn off anitivirus while downloading the repo
 
----
+Features
+Generate RSA Key Pair: Create a public and private RSA key.
 
-## Features
+Encrypt Files: Encrypt files using AES, with the AES key encrypted by the RSA public key.
 
-- Generate secure RSA key pairs (2048-bit)
-- Encrypt any file using AES (Fernet) and encrypt the AES key using RSA
-- Decrypt the AES key with RSA and restore the original file
-- Simple CLI-based interaction
-- Cross-platform (runs on any system with Python)
+Decrypt Files: Decrypt files using the AES key encrypted with the RSA private key.
 
----
+Requirements
+Python 3.x
 
-## 🛠️ How It Works
+cryptography library
 
-1. **RSA Key Generation**
-   - `private_key.pem`: Used for decryption
-   - `public_key.pem`: Used for encrypting the AES key
+tkinter for GUI
 
-2. **Hybrid Encryption**
-   - A random AES key is generated for each file
-   - File is encrypted using AES
-   - The AES key is encrypted using the RSA public key
+To install the required libraries:
 
-3. **Hybrid Decryption**
-   - AES key is decrypted using the RSA private key
-   - File is decrypted using the decrypted AES key
+nginx
+Copy
+Edit
+pip install cryptography
+Usage
+Generate RSA Key Pair
+Open the tool.
 
----
+Click Generate RSA Key Pair.
+
+The key pair will be saved in D:/Coding n shit/Projects/Encryption Tool/Files as public_key.pem and private_key.pem.
+
+Encrypt a File
+Click Encrypt.
+
+Select a file to encrypt.
+
+The encrypted file and the encrypted AES key will be saved in D:/Coding n shit/Projects/Encryption Tool/Files.
+
+Decrypt a File
+Click Decrypt.
+
+Select the encrypted file and the encrypted AES key.
+
+The decrypted file will be saved in D:/Coding n shit/Projects/Encryption Tool/Files.
+
+File Locations
+Encrypted files and keys are saved in D:/Coding n shit/Projects/Encryption Tool/Files.
+
+Decrypted files are also saved in the same folder.
+
+Notes
+Make sure that the paths are correct and accessible.
+
+Ensure you have permissions to write to the folder D:/Coding n shit/Projects/Encryption Tool/Files.
+
+License
+This project is open source and free to use. For any issues or questions, please refer to the GitHub repository.
