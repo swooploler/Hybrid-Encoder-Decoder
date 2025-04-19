@@ -1,6 +1,9 @@
 import keygen
 import encrypt
 import decrypt
+import os
+
+cwd = os.getcwd ()
 
 def menu():
     print("\nHybrid File Encryption Tool")
@@ -17,9 +20,9 @@ def menu():
         file_path = input("Enter path to file: ")
         encrypt.encrypt_file(file_path, "public_key.pem")
     elif choice == "3":
-        decrypt.decrypt_file("encrypted_files/encrypted_file.bin",
-                             "encrypted_files/encrypted_key.bin",
-                             "private_key.pem")
+        decrypt.decrypt_file(f"{cwd}/encrypted_file.bin",
+                             f"{cwd}/encrypted_key.bin",
+                             f"{cwd}/private_key.pem")
     elif choice == "4":
         exit()
     else:

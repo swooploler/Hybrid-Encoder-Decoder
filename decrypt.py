@@ -3,6 +3,8 @@ from cryptography.hazmat.primitives.asymmetric import padding
 from cryptography.fernet import Fernet
 import os
 
+cwd = os.getcwd ()
+
 def decrypt_file(encrypted_file_path, encrypted_key_path, private_key_path):
     try:
         # Load private RSA key
@@ -39,7 +41,7 @@ def decrypt_file(encrypted_file_path, encrypted_key_path, private_key_path):
             return
 
         # Define the output directory for decrypted file
-        output_dir = r"D:/Coding n shit/Projects/Encryption Tool/Files"  # Destination folder
+        output_dir = cwd  # Destination folder
 
         # Ensure the directory exists
         if not os.path.exists(output_dir):
@@ -59,6 +61,7 @@ def decrypt_file(encrypted_file_path, encrypted_key_path, private_key_path):
 
 if __name__ == "__main__":
     # Replace with your actual file paths
-    decrypt_file("D:/Coding n shit/Projects/Encryption Tool/encrypted_files/encrypted_file.bin", 
-                 "D:/Coding n shit/Projects/Encryption Tool/encrypted_files/encrypted_key.bin", 
-                 "D:/Coding n shit/Projects/Encryption Tool/private_key.pem")
+    decrypt_file(f"{cwd}/encrypted_file.bin", 
+                 f"{cwd}/encrypted_key.bin", 
+                 f"{cwd}/private_key.pem")
+# "D:/Coding n shit/Projects/Encryption Tool/Files"

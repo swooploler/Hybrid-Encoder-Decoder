@@ -5,7 +5,7 @@ from cryptography.hazmat.primitives.asymmetric import padding, rsa
 from cryptography.fernet import Fernet
 import os
 
-
+cwd = os.getcwd ()
 # Function to style buttons
 def style_widget(widget):
     font = ('Courier', 14, 'bold')
@@ -20,7 +20,7 @@ def generate_rsa_keys():
         public_key = private_key.public_key()
 
         # Save private key
-        private_key_path = os.path.join("D:/Coding n shit/Projects/Encryption Tool/Files", "private_key.pem")
+        private_key_path = os.path.join(cwd, "private_key.pem")
         with open(private_key_path, "wb") as f:
             f.write(private_key.private_bytes(
                 encoding=serialization.Encoding.PEM,
@@ -29,14 +29,14 @@ def generate_rsa_keys():
             ))
 
         # Save public key
-        public_key_path = os.path.join("D:/Coding n shit/Projects/Encryption Tool/Files", "public_key.pem")
+        public_key_path = os.path.join(cwd, "public_key.pem")
         with open(public_key_path, "wb") as f:
             f.write(public_key.public_bytes(
                 encoding=serialization.Encoding.PEM,
                 format=serialization.PublicFormat.SubjectPublicKeyInfo
             ))
 
-        messagebox.showinfo("Success", f"RSA keys generated and saved in 'D:/Coding n shit/Projects/Encryption Tool/Files'")
+        messagebox.showinfo("Success", f"RSA keys generated and saved in {cwd}")
     except Exception as e:
         messagebox.showerror("Error", f"RSA Key generation failed: {str(e)}")
 
@@ -73,7 +73,7 @@ def encrypt_file():
         )
 
         # Define save path
-        output_dir = r"D:/Coding n shit/Projects/Encryption Tool/Files"
+        output_dir = cwd
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
 
@@ -135,7 +135,7 @@ def decrypt_file():
         decrypted_data = fernet.decrypt(encrypted_data)
 
         # Define the output directory for the decrypted file
-        output_dir = r"D:/Coding n shit/Projects/Encryption Tool/Files"
+        output_dir = cwd
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
 
