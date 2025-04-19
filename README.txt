@@ -21,9 +21,8 @@ tkinter for GUI
 To install the required libraries:
 
 nginx
-Copy
-Edit
 pip install cryptography
+
 Usage
 Generate RSA Key Pair
 Open the tool.
