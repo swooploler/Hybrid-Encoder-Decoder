@@ -4,6 +4,8 @@ from cryptography.hazmat.primitives import serialization
 from cryptography.fernet import Fernet
 import os
 
+cwd = os.getcwd ()
+
 def encrypt_file(file_path, public_key_path):
     # Generate AES key (Fernet key)
     aes_key = Fernet.generate_key()
@@ -25,13 +27,13 @@ def encrypt_file(file_path, public_key_path):
     )
 
     # Save encrypted file
-    encrypted_file_path = "D:/Coding n shit/Projects/Encryption Tool/Files/encrypted_file.bin"
+    encrypted_file_path = f"{cwd}/encrypted_file.bin"
     with open(encrypted_file_path, "wb") as f:
         f.write(encrypted_data)
 
     # Save encrypted AES key
-    encrypted_key_path = "D:/Coding n shit/Projects/Encryption Tool/Files/encrypted_key.bin"
+    encrypted_key_path = f"{cwd}/encrypted_key.bin"
     with open(encrypted_key_path, "wb") as f:
         f.write(encrypted_aes_key)
 
-    print(f"🔐 File encrypted and saved in 'D:/Coding n shit/Projects/Encryption Tool/Files/'")
+    print(f"🔐 File encrypted and saved in '{cwd}/encrypted_file.bin'")
